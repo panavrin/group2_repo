@@ -60,12 +60,21 @@
     var wordCount = 0;
     var sentenceCount = 0;
     var cyllableCount = 0;
+    var Flesch = 0;
+    var CLI=0;
 
     function updateStats() {
       var input = document.getElementById('input_data').value;
       characterCount = countCharacters(input);
       wordCount = countWords(input);
       sentenceCount = countSentences(input);
+      cyllableCount = count_syllables();
+
+      Flesch=206.835-1.015*wordCount/sentenceCount-84.6*cyllableCount/wordCount
+      var L = characterCount/wordCount*100
+      var S = sentenceCount/wordCount*100
+      CLI=0.0588*L-0.296*S-15.8
+
 
       updateUI();
     }
@@ -102,6 +111,28 @@
       document.getElementById('num_letters').innerHTML = characterCount;
       document.getElementById('num_words').innerHTML = wordCount;
       document.getElementById('num_sentences').innerHTML = sentenceCount;
+      document.getElementById('num_sylalbles').innerHTML = cyllableCount;
+      document.getElementById('flesh_score').innerHTML = Flesch;
+      document.getElementById('cli_score').innerHTML = CLI;
+    }
+
+    function count_syllables()
+    {
+      var num_sylalbles=0
+      words = $('#input_data').val().split(/\s+/)
+      for(i=0;i<words.length;i++)
+        num_sylalbles+=syllables(words[i])
+
+      return num_sylalbles
+
+    }
+    function syllables(word)
+    {
+      word = word.toLowerCase();
+      if(word.length <= 3) { return 1; }
+      word = word.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, '');
+      word = word.replace(/^y/, '');
+      return word.match(/[aeiouy]{1,2}/g).length;
     }
 
   // your code goes here.
