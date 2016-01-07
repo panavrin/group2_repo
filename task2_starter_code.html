@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Word Counter/Readability Index Calculator</title>
+
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+     <!-- Optional theme -->
+    <link  href="https:///bootswatch.com/paper/bootstrap.min.css" Rel="stylesheet" id="bs-theme-stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+
+  <style>
+
+  textarea{
+      width: 95%;
+      height: 50%;
+      min-height: 400px;
+      margin: auto;
+      border: solid 2px;;
+      resize:none;
+   }
+  </style>
+  </head>
+  <body>
+      <br>
+    <div class="container">
+      <div class = "row">
+        <div>
+        <h3> Word Counter/Readability Index Calculator
+        </h3>
+      </div>
+    </div>
+    <div class = "row">
+
+      <div class ="col-lg-6">
+        <textarea id = "input_data" placeholder="write input data"></textarea>
+      </div>
+      <div class = "control col-lg-6">
+        <h4>Stats</h4>
+        <div> the number of letters: <span id = "num_letters">0</span></div>
+          <div> the number of words: <span id = "num_words">0</span></div>
+          <div> the number of sentences: <span id = "num_sentences">0</span></div>
+          <div> the number of syllables: <span id = "num_sylalbles">0</span></div>
+          <div> Flesh Score: <span id = "flesh_score">0</span></div>
+          <div> CLI Score: <span id = "cli_score">0</span></div>
+          <div> Top Ten words with more than 2 syllables:
+            <div id = "top_ten"></div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <script>
+
+  // your code goes here. 
+
+
+  </script>
+
+
+  </body>
+</html>
