@@ -37,7 +37,7 @@
     <div class = "row">
 
       <div class ="col-lg-6">
-        <textarea id = "input_data" placeholder="write input data"></textarea>
+        <textarea id = "input_data" placeholder="write input data" onkeypress="updateStats()"></textarea>
       </div>
       <div class = "control col-lg-6">
         <h4>Stats</h4>
@@ -55,8 +55,56 @@
   </div>
 
   <script>
+    updateStats();
+    var characterCount = 0;
+    var wordCount = 0;
+    var sentenceCount = 0;
+    var cyllableCount = 0;
 
-  // your code goes here. 
+    function updateStats() {
+      var input = document.getElementById('input_data').value;
+      characterCount = countCharacters(input);
+      wordCount = countWords(input);
+      sentenceCount = countSentences(input);
+
+      updateUI();
+    }
+
+    function countCharacters(input) {
+      return input.length;
+    }
+
+    function countWords(input) {
+      var cc = 1;
+      for (character in input) {
+        if ((input[character] == ' ') || (input[character] == '\n'))
+          cc++;
+        }
+      return cc;
+      }
+
+      function countSentences(input) {
+        var sc = 0;
+        for (character in input) {
+          var temp = input[character];
+          switch (temp) {
+            case ".":
+            case "!":
+            case "?":
+              sc++;
+              break;
+            }
+        }
+        return sc;
+      }
+
+    function updateUI() {
+      document.getElementById('num_letters').innerHTML = characterCount;
+      document.getElementById('num_words').innerHTML = wordCount;
+      document.getElementById('num_sentences').innerHTML = sentenceCount;
+    }
+
+  // your code goes here.
 
 
   </script>
