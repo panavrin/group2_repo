@@ -12,8 +12,8 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
     <!-- worker 2 -->
-    <script src="worker2.js" />
-
+    <script src="worker2.js" type-"text/javascript"></script>
+    <script src="getNumberOfChars.js" type="text/javascript"></script>
 
   <style>
   textarea{
@@ -45,7 +45,7 @@
         <div> the number of letters: <span id = "num_letters">0</span></div>
           <div> the number of words: <span id = "num_words">0</span></div>
           <div> the number of sentences: <span id = "num_sentences">0</span></div>
-          <div> the number of syllables: <span id = "num_sylalbles">0</span></div>
+          <div> the number of syllables: <span id = "num_syllables">0</span></div>
           <div> Flesh Score: <span id = "flesh_score">0</span></div>
           <div> CLI Score: <span id = "cli_score">0</span></div>
           <div> Top Ten words with more than 2 syllables:
@@ -59,7 +59,11 @@
   // your code goes here.
   $('#input_data').on('input', function() {
     // do your stuff
-    console.log("test");
+    var inputText = $("#input_data").val();
+    var numChars = getNumberOfChars(inputText);
+    console.log(numChars);
+    $("#num_letters").text(numChars);
+
   });
   </script>
 
